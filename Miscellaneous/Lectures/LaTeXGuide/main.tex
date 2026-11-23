@@ -15,7 +15,7 @@
 \maketitle
 \noindent Use this guide while writing: read the explanation, copy the source,
 then compare it with the rendered example. The final sections document all
-110 personal VS Code snippets and the commands in your current style file.
+117 personal VS Code snippets and the commands in your current style file.
 \tableofcontents
 \newpage
 
@@ -415,7 +415,7 @@ editable numerator and denominator fields. The \texttt{inline} body looks
 unusual because it combines literal dollar signs with snippet placeholders:
 after expansion it gives a single-dollar inline math pair, with the cursor
 outside it. Do not paste raw placeholder bodies directly into a TeX document.
-These are the 110 personal snippets from your supplied updated list;
+These are the 117 personal snippets from your supplied updated list;
 extension-provided snippets and keyboard keybindings are separate.
 
 \subsection{Document templates}
@@ -682,6 +682,46 @@ $${1:expression}$$0
 \subsubsection*{\texttt{inner}: Inner product using Style.sty}
 \begin{lstlisting}
 \inner{${1:x}}{${2:y}}$0
+\end{lstlisting}
+
+\subsection{Text and math styling}
+These shortcuts wrap selected text. With no selection, type into the empty
+field; for \texttt{col;}, choose the color first (red by default), then the text.
+The \lstinline|${TM_SELECTED_TEXT:$1}| variable uses the selection when
+available and otherwise provides an editable tab stop. Press Tab to reach
+\lstinline|$0| after the closing brace.
+Use \texttt{mbf;} and \texttt{bsy;} inside math mode: \lstinline|\mathbf|
+bolds mathematical letters, while \lstinline|\boldsymbol| also bolds symbols
+such as Greek letters. Colored text requires \texttt{xcolor}, and
+\lstinline|\boldsymbol| requires \texttt{amsmath}; your style file loads both.
+
+\subsubsection*{\texttt{bf;}: Bold text}
+\begin{lstlisting}
+\textbf{${TM_SELECTED_TEXT:$1}}$0
+\end{lstlisting}
+\subsubsection*{\texttt{it;}: Italic text}
+\begin{lstlisting}
+\textit{${TM_SELECTED_TEXT:$1}}$0
+\end{lstlisting}
+\subsubsection*{\texttt{em;}: Emphasized text}
+\begin{lstlisting}
+\emph{${TM_SELECTED_TEXT:$1}}$0
+\end{lstlisting}
+\subsubsection*{\texttt{ul;}: Underlined text}
+\begin{lstlisting}
+\underline{${TM_SELECTED_TEXT:$1}}$0
+\end{lstlisting}
+\subsubsection*{\texttt{col;}: Colored text}
+\begin{lstlisting}
+\textcolor{${1:red}}{${TM_SELECTED_TEXT:$2}}$0
+\end{lstlisting}
+\subsubsection*{\texttt{mbf;}: Bold mathematical letters}
+\begin{lstlisting}
+\mathbf{${TM_SELECTED_TEXT:$1}}$0
+\end{lstlisting}
+\subsubsection*{\texttt{bsy;}: Bold mathematical symbols}
+\begin{lstlisting}
+\boldsymbol{${TM_SELECTED_TEXT:$1}}$0
 \end{lstlisting}
 
 \subsection{Matrices and math formatting}

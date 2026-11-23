@@ -1,0 +1,37 @@
+\documentclass[main.tex]{subfiles}
+
+% Individual lecture title
+\ifSubfilesClassLoaded{%
+    \title{Math 113: Irreducible polynomial for alpha over F}
+    \author{\defaultauthor}
+    \date{November 19, 2026}
+}{}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{\maketitle}{}
+
+\section{Lecture 24: Irreducible polynomial for \texorpdfstring{$\alpha$}{α} over F}
+
+An element $\alpha \in E  \supseteq F$ can be a zero for many polynomials $f(x) \in F[x]$, but: 
+
+\begin{theorem}
+    Let $\alpha \in E \supseteq F$ be algebraic over F. Then there is an irreducibel $p(x) \in F[x]$ with $p(\alpha) = 0$
+
+    This p(x) is unique up to a constant facotr in F and is a polynomial of minimal degree in F[x] having $\alpha$ as a zero. 
+\end{theorem}
+\begin{definition}
+    This polynomial is the \textbf{irreducible polynomial for } $\alpha$ over F. We denote it by $irr(\alpha,F)$
+
+    The degree of $irr(\alpha,F)$ is the degree of $\alpha$ over F, denoted $deg(\alpha,F)$
+\end{definition}
+\begin{example}
+    $irr(\sqrt{2},\mathbb{Q})=x^2 - 2$, so $deg(\sqrt{2}, \mathbb{Q}) = 2 $
+\end{example}
+\begin{example}
+    $irr(\sqrt{1+\sqrt{3}}, \mathbb{Q} = x^4 - 2x^2-2)$, so $deg(\sqrt{1+\sqrt{3}},\mathbb{Q})=4$
+\end{example}
+\subsection{Adjoining elements to Fields}
+Let E be an extension field of F, $\alpha \in E$. So 
+$$\varphi_{\alpha}: F[x] \to E$$ 
+\end{document}
