@@ -1,0 +1,205 @@
+\documentclass[main.tex]{subfiles}
+
+% Individual lecture title
+\ifSubfilesClassLoaded{%
+    \title{Math 113: Vector Spaces}
+    \author{\defaultauthor}
+    \date{November 24, 2026}
+}{}
+
+\begin{document}
+
+\ifSubfilesClassLoaded{\maketitle}{}
+
+\section{Lecture 25: Vector Spaces}
+\begin{definition}
+    Let F be a field. A vector space over F or F-vector space is an abelian group $(V, +)$ together with an operation $F \times V \to V$ (scalar multiplication) satisfying
+
+    $$\forall a, b \in F \qquad \text{and} \qquad \alpha, \beta \in V$$
+    \begin{enumerate}
+        \item $a \alpha \in V$. We write scalar multiplication as juxaposition
+        \item $a(b \alpha) = (ab) \alpha$
+        \item $\underbrace{(a+b)}_{\text{in F}} \alpha = a \alpha \underbrace{+}_{\text{in V}} b \alpha$
+        \item $a(\alpha + \beta) = a \alpha + a \beta$
+        \item $1 \alpha = \alpha$
+    \end{enumerate}
+\end{definition}
+\subsection{Examples of Vector Spaces}
+\begin{example}\leavevmode\par
+    \begin{enumerate}
+        \item $\mathbb{R}^n \text{ over } \mathbb{R}$ 
+        \item $\mathbb{C} \text{ over } \mathbb{R} \qquad \mathbb{R} \times \mathbb{C} \to \mathbb{C}$
+        \item $\mathbb{R} \text{ over } \mathbb{Q}$
+        \item More generally, any extension field E over F
+        \item F[x] over F $(a,f(a)) \to af(a)$
+    \end{enumerate}
+
+\end{example}
+\begin{proposition}
+    Let V be an F-vector space, then $0 \alpha = 0, \alpha0 = 0$ and $(-a) \alpha = a(-\alpha) = -(a\alpha), \forall a \in F, \alpha \in V$
+\end{proposition}
+\begin{proof}
+    By distributivity,
+    \[
+        0_F\alpha = (0_F+0_F)\alpha = 0_F\alpha + 0_F\alpha.
+    \]
+    Adding the inverse of $0_F\alpha$ to both sides gives $0_F\alpha=0_V$.
+
+    Similarly,
+    \[
+        a0_V = a(0_V+0_V) = a0_V+a0_V,
+    \]
+    so $a0_V=0_V$.
+
+    Next,
+    \[
+        a\alpha+(-a)\alpha = (a+(-a))\alpha = 0_F\alpha=0_V.
+    \]
+    Therefore $(-a)\alpha=-(a\alpha)$.
+
+    Likewise,
+    \[
+        a\alpha+a(-\alpha) = a(\alpha+(-\alpha))=a0_V=0_V,
+    \]
+    so $a(-\alpha)=-(a\alpha)$.
+
+    Hence,
+    \[
+        (-a)\alpha=a(-\alpha)=-(a\alpha).
+    \] 
+\end{proof}
+Our main example is an extension field $E \supseteq F$ is a vector space over F
+\subsection{Linear Independence \& Bases}
+
+Let $V$ be an $F$-vector space, and let
+\[
+    S = \{\alpha_i \mid i \in I\} \subseteq V.
+\]
+
+We say that $S$ \textbf{spans} $V$ if, for every $\beta \in V$,
+there exist $n \in \mathbb{N}$, indices $i_1,\ldots,i_n \in I$,
+and scalars $a_1,\ldots,a_n \in F$ such that
+
+\[
+    \beta = a_1\alpha_{i_1} + \cdots + a_n\alpha_{i_n}.
+\]
+We say that $S$ is \textbf{linearly independent} if, whenever
+$i_1,\ldots,i_n \in I$ are distinct and $a_1,\ldots,a_n \in F$ satisfy
+\[
+\sum_{j=1}^{n} a_j\alpha_{i_j} = 0_V,
+\]
+then $a_1 = a_2 = \cdots = a_n = 0_F$.
+
+\begin{example}
+    Let $E \supseteq F$ and $\alpha \in E$ be algebraic over F. Then $F(\alpha)$ is a vector space over F spanned by $1, \alpha, \ldots, \alpha^{n-1}, n=deg(\alpha,F)$
+\end{example}
+\begin{definition}
+    $S \subseteq V $ is a \textbf{basis} of V if it spans V and is linearly independent
+\end{definition}
+\begin{definition}
+    A vector space is \textbf{finite dimensional} if it has a finite spanning list
+\end{definition}
+\begin{example}\leavevmode
+    \begin{itemize}
+        \item $F(\alpha)$ If $\alpha$ is algebraic, then this is a finite-dimensional vector space
+        \item F[x] is an infinite-dimensional vector space
+    \end{itemize}
+\end{example}
+\begin{theorem}
+    In a finite-dimensional vector space, every finite spanning set contains a subset that is a basis
+\end{theorem}
+\begin{corollary}
+    A finite-dimensional vector space has a finite basis
+\end{corollary}
+\begin{theorem}
+    Let $S = {\alpha_1, \alpha_2, \dots, \alpha_r}$ be a finite linearly independent set in the finite-dimensional vector space over F. Then S can be enlarged to a basis for V over F. Furthermore, if $B = {\beta_1, \dots, \beta_n}$ is any basis for V over F, then $r \leq n$
+\end{theorem}
+\begin{corollary}
+    Any two bases of a finite dimensional vector space V over F have the same number of elements
+\end{corollary}
+\begin{example}
+    Let
+    \[
+    S = \left\{
+    \begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix},
+    \begin{pmatrix}
+        0 \\ 1
+    \end{pmatrix}
+    \right\} \subseteq \R^2.
+    \]
+    We show that $S$ is a basis for $\R^2$.
+
+    \textbf{Linear independence:}
+
+    Suppose
+    \[
+    a_1 \begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}
+    + a_2 \begin{pmatrix}
+        0 \\ 1
+    \end{pmatrix}
+    = \begin{pmatrix}
+        0 \\ 0
+    \end{pmatrix}.
+    \]
+
+    Comparing coordinates, we obtain
+    \[
+    a_1 = 0, \qquad a_1 + a_2 = 0.
+    \]
+
+    Thus $a_1 = a_2 = 0$, so $S$ is linearly independent.
+
+    \textbf{Spanning:}
+
+    For any $c,d \in \R$, we have
+    \[
+    \begin{pmatrix}
+        c \\ d
+    \end{pmatrix}
+    = c \begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}
+    + (d-c) \begin{pmatrix}
+        0 \\ 1
+    \end{pmatrix}.
+    \]
+
+    Hence $S$ spans $\R^2$.
+
+    Therefore, since $S$ is linearly independent and spans $\R^2$,
+    it is a basis for $\R^2$ over $\R$.
+\end{example}
+
+\begin{definition}
+    The number of elements in a basis for a finite dimensional vector space V over f is the \textbf{dimension of V over F}, $dim_F(V)$
+\end{definition}
+\begin{example}\leavevmode
+    \begin{itemize}
+        \item $K = \Q(\sqrt[4]{2})$ has basis ${1, \sqrt[4]{2}, (\sqrt[4]{2})^2, (\sqrt[4]{2})^3}$ has basis ${1, \sqrt{2}}$, so it has dimension 4
+        \item $E = \Q(\sqrt{2})$
+        \item $dim_E(K) = 2$, with basis ${1, \sqrt[4]{2}}$
+    \end{itemize}
+\end{example}
+
+\subsection{An application to field theory}
+
+\begin{theorem}
+    Let $\alpha \in E \supseteq F$ be algebraic with degree n. Then $F(\alpha)$ is an n-dimensioanl vector space over F, with basis ${1, \alpha, \dots, \alpha^{n-1}}$. Furthermore, \textbf{every} $\beta \in F(\alpha)$ is algebraic over F, $deg(\beta, F) \leq n$
+\end{theorem}
+\begin{proof}\leavevmode
+    We saw that ${1, \alpha, \dots, \alpha^{n-1}}$ spans $F(\alpha)$
+    Suppose $c_0 \dot 1 + c_1 \alpha + \dots + c_{\alpha-1}\alpha^{n-1} - 0$
+    Let f(x) = $\sum_{i=0}^{n-1}c_ix^i $ then f(x) = 0. But $degf \leq n-1 < deg(\alpha, F)$. So f(x) = 0, so $c_i = 0$, thus this is a basis. 
+
+
+    Let $\beta \in F(\alpha)$. Consider ${1, \beta, \beta^2, \dots, \beta^n}$ This n+1 element set is the n-dimensional vector space $F(\alpha)$ cannot be linearly independent. So there are some coefficients $a_j \in$, not all zero with $a_0 + a_1 \beta + \dots + a_n \beta^n$. 
+
+    Let $g(x) = a_0 + a_1x + \dots a_nx^n \in F[x]$. Then $f(x) \neq 0$ and $f(\beta) = 0$, so $\beta$ is algebraic over F.
+
+    Furthermore, we have found a polynomial of degree n for which this is 0, so $deg(\beta, F) \leq n$
+\end{proof}
+\end{document}
