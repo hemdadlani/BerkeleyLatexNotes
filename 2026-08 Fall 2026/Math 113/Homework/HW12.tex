@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[solutions]{../../../mystyle/Style}
+\usepackage[margin=1in]{geometry}
+
+\sethwinfo{\defaultauthor}{Math 113}{Homework 12}{12/1/26}
+
+\begin{document}
+\makehwtitle
+
+\begin{problem}[29.4]
+    We want to show that $\alpha = \sqrt{1+\sqrt[3]{2}} \in C$ is algebraic over $\Q$. 
+\end{problem}
+
+
+\begin{solution}
+
+    \begin{align*}
+        x &= \sqrt{1 +\sqrt[3]{2}} \\
+        x^2 &= 1 + \sqrt[3]{2} \\
+        x^2 - 1 &= \sqrt[3]{2} \\
+        (x^2 - 1)^3 &= 2 \\
+        x^6 - 3x^4 + 3x^2 - 1 &= 2 \\
+        x^6 - 3x^4 + 3x^2 - 3 &= 0 \\
+    \end{align*}
+    
+    Now define $f(x) = x^6 - 3x^4 + 3x^2 - 3$. Because $f(x) \in \Q[x], f(x) \neq 0, f(\alpha) = 0$, we can conclude that $\alpha = \sqrt{1 + \sqrt[3]{2}}$ is algebraic over $\Q$
+
+\end{solution}
+
+\begin{problem}[29.4]
+    \begin{subproblem}
+        \item Show that $f(x) = x^2 + 1$ is irreducible over $\Z_3[x]$
+    \end{subproblem}
+    \begin{solution}
+        Because $x^2 + 1$ has degree $\leq 3$, it suffices to show that f has no roots in $\Z_3$
+
+        \[f(0) = 0^2 + 1 = 1 \neq 0 \\ \] 
+        \[f(1) = 1^2 + 1 = 2 \neq 0\]
+        \[f(2) = 2^2 + 1 = 4 + 1 = 5 = 2 \neq 0 \]
+        Because $f(x)$ has no roots in $\Z_3$, it is irreducible over $\Z_3[x]$
+    \end{solution}
+    \begin{subproblem}[resume]
+        \item Create multiplication and addition tables for the extension field $\Z_3(\alpha)$, where $\alpha$ is a zero of $x^2 + 1$
+    \end{subproblem}
+    \begin{solution}
+        Note that because $\alpha^2 + 1 = 0, \alpha^2 = -1 = 2$
+        
+        Multiplcation table:
+        \[
+            \begin{array}{c|ccccccccc}
+                * & 0 & 1 & 2 & \alpha & 2\alpha & 1 + \alpha & 2 + \alpha & 1 + 2\alpha & 2 + 2\alpha \\ \hline
+                0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                1 & 0 & 1 & 2 & \alpha & 2\alpha & 1 + \alpha & 2 + \alpha & 1 + 2\alpha & 2 + 2\alpha \\
+                2 & 0 & 2 & 1 & 2\alpha & \alpha & 2 + 2\alpha & 1 + 2 \alpha & 2 + \alpha & 1 + \alpha \\
+                \alpha & 0 & \alpha & 2\alpha & 2 & 1 & 2 + \alpha & 2 + 2\alpha & 1 + \alpha & 2 + 2\alpha \\
+                2\alpha & 0 & 2\alpha & \alpha & 1 & 2 & 3 & 1 + 2\alpha & 2 + 2\alpha & \alpha \\
+                1 + \alpha 
+                
+            \end{array}
+            \]
+    \end{solution}
+\end{problem}
+
+\end{document}
+

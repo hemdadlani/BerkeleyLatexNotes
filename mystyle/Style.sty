@@ -64,6 +64,7 @@
 
 \NewDocumentEnvironment{problem}{O{} o}{%
   \refstepcounter{problem}
+  \restartlist{subproblem}%
   \par\addvspace{0.75\baselineskip}
   \noindent\textbf{Problem~\ifstrempty{#1}{\theproblem}{#1}}
   \IfValueT{#2}{\hfill\textit{[#2 points]}}
@@ -72,11 +73,11 @@
   \par\addvspace{0.5\baselineskip}
 }
 
-\NewDocumentEnvironment{subproblem}{}{\begin{enumerate}[label=\textnormal{Part \Alph*.},leftmargin=*]}{\end{enumerate}}
-
+\newlist{subproblem}{enumerate}{4}
+\setlist[subproblem]{label=\alph*),leftmargin=*}
 \NewDocumentEnvironment{solution}{}{%
   \ifStyle@solutions
-    \par\smallskip\noindent\textbf{Solution. }
+    \par\smallskip\noindent\textbf{Solution }%
   \else
     \begin{comment}
   \fi
@@ -152,7 +153,7 @@
 \NewDocumentCommand{\highlight}{O{yellow!35} m}{\colorbox{#1}{#2}}
 \NewDocumentCommand{\marginref}{m}{\marginpar{\scriptsize #1}}
 
-\setlist[enumerate]{itemsep=0.25em,topsep=0.4em,parsep=0pt}
+\setlist*[enumerate,subproblem]{itemsep=0.25em,topsep=0.4em,parsep=0pt}
 \setlist[itemize]{itemsep=0.25em,topsep=0.4em,parsep=0pt}
 
 % Allow equation numbering per section by default
