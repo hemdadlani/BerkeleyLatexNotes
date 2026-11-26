@@ -1,9 +1,8 @@
 \documentclass{article}
 \usepackage[solutions]{../../../mystyle/Style}
 \usepackage[margin=1in]{geometry}
-
 \sethwinfo{\defaultauthor}{Math 113}{Homework 12}{12/1/26}
-
+\setlength{\parindent}{0pt}
 \begin{document}
 \makehwtitle
 
@@ -27,7 +26,7 @@
 
 \end{solution}
 
-\begin{problem}[29.4]
+\begin{problem}[29.18]
     \begin{subproblem}
         \item Show that $f(x) = x^2 + 1$ is irreducible over $\Z_3[x]$
     \end{subproblem}
@@ -51,15 +50,224 @@
                 * & 0 & 1 & 2 & \alpha & 2\alpha & 1 + \alpha & 2 + \alpha & 1 + 2\alpha & 2 + 2\alpha \\ \hline
                 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
                 1 & 0 & 1 & 2 & \alpha & 2\alpha & 1 + \alpha & 2 + \alpha & 1 + 2\alpha & 2 + 2\alpha \\
-                2 & 0 & 2 & 1 & 2\alpha & \alpha & 2 + 2\alpha & 1 + 2 \alpha & 2 + \alpha & 1 + \alpha \\
-                \alpha & 0 & \alpha & 2\alpha & 2 & 1 & 2 + \alpha & 2 + 2\alpha & 1 + \alpha & 2 + 2\alpha \\
-                2\alpha & 0 & 2\alpha & \alpha & 1 & 2 & 3 & 1 + 2\alpha & 2 + 2\alpha & \alpha \\
-                1 + \alpha 
-                
+                2 & 0 & 2 & 1 & 2\alpha & \alpha & 2 + 2\alpha & 1 + 2\alpha & 2 + \alpha & 1 + \alpha \\
+                \alpha & 0 & \alpha & 2\alpha & 2 & 1 & 2 + \alpha & 2 + 2\alpha & 1 + \alpha & 1 + 2\alpha \\
+                2\alpha & 0 & 2\alpha & \alpha & 1 & 2 & 1 + 2\alpha & 1 + \alpha & 2 + 2\alpha & 2 + \alpha \\
+                1 + \alpha & 0 & 1 + \alpha & 2 + 2\alpha & 2 + \alpha & 1 + 2\alpha & 2\alpha & 1 & 2 & \alpha \\
+                2 + \alpha & 0 & 2 + \alpha & 1 + 2\alpha & 2 + 2\alpha & 1 + \alpha & 1 & \alpha & 2\alpha & 2 \\
+                1 + 2\alpha & 0 & 1 + 2\alpha & 2 + \alpha & 1 + \alpha & 2 + 2\alpha & 2 & 2\alpha & \alpha & 1 \\
+                2 + 2\alpha & 0 & 2 + 2\alpha & 1 + \alpha & 1 + 2\alpha & 2 + \alpha & \alpha & 2 & 1 & 2\alpha \\
+            \end{array}
+            \]
+
+        Addition table: 
+        \[
+            \begin{array}{c|ccccccccc}
+                + & 0 & 1 & 2 & \alpha & 2\alpha & 1 + \alpha & 2 + \alpha & 1 + 2\alpha & 2 + 2\alpha \\ \hline
+                0 & 0 & 1 & 2 & \alpha & 2\alpha & 1 + \alpha & 2 + \alpha & 1 + 2\alpha & 2 + 2\alpha\\
+                1 & 1 & 2 & 0 & 1 + \alpha & 1 + 2\alpha & 2 + \alpha & \alpha & 2 + 2\alpha & 2\alpha \\
+                2 & 2 & 0 & 1 & 2 + \alpha & 2 + 2\alpha & \alpha & 1 + \alpha & 2\alpha & 1 + 2\alpha\\
+                \alpha & \alpha & 1 + \alpha & 2 + \alpha & 2\alpha & 0 & 1 + 2\alpha & 2 + 2\alpha & 1 & 2\\
+                2\alpha & 2\alpha & 1 + 2\alpha & 2 + 2\alpha & 0 & \alpha & 1 & 2 & 1 + \alpha & 2 + \alpha\\
+                1 + \alpha & 1 + \alpha & 2 + \alpha & \alpha & 1 + 2 \alpha & 1 & 2 + 2 \alpha & 2\alpha & 2 & 0\\
+                2 + \alpha & 2 + \alpha & \alpha & 1 + \alpha & 2 + 2\alpha & 2 & 2\alpha & 1 + 2\alpha & 0 & 1\\
+                1 + 2\alpha & 1 + 2\alpha & 2 +2\alpha & 2\alpha & 1 & 1 + \alpha & 2 & 0 & 2 + \alpha & \alpha\\
+                2 + 2\alpha & 2 + 2\alpha & 2\alpha & 1 + 2\alpha & 2 & 2 + \alpha & 0 & 1 & \alpha & 1 + \alpha 
+
             \end{array}
             \]
     \end{solution}
 \end{problem}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\begin{problem}[29.30]
+    Let $E$ be an extension field of a finite field $F$, where $F$ has $q$ elements. Let $\alpha \in E$ be algebraic over $F$ of degree $n$. Prove that $F(\alpha)$ has $q^n$ elements.
+\end{problem}
+\begin{solution}
+    Because $\alpha$ is algebraic with degree n, this means that every element of $F(\alpha)$ can be written uniquely as $a_0 + a_1 \alpha + \dots + a_{n-1}\alpha^{n-1}, \quad a_i \in F$
 
+    Therefore, because there are $n$ coefficients, there are $q$ options for each $a_i$, as there are $q$ elements in $F$. Therefore, there are $q^n$ elements in $F(\alpha)$, as each element can be represented uniquely in this manner. 
+\end{solution}
+
+\begin{problem}[29.32]
+    Consider the prime field $\Z_p$ of characteristic $p \neq 0$
+    \begin{subproblem}
+        \item Show that, for $p \neq 2$, not every element in $\Z_p$ is a square of $\Z_p$. [Hint: $1^2 = (p-1)^2 = 1 \pmod{p}$]
+    \end{subproblem}
+    \begin{solution}
+        Consider the function $f\colon \Z_p \to \Z_p$, where $f(x) = x^2$. 
+        
+        Notice that there are p elements in $\Z_p$. 1 element, 0, maps to $f(0) = 0$
+
+        We know that $f(1) = 1$ and $f(p-1) = (p-1)^2 = 1 \pmod{p}$. Because $p \neq 2$, these are two distinct inputs producing the same output. 
+
+        Of the $p$ inputs, two inputs already map to the same output ($1$ and $p-1$). Therefre, there can be at most $p-1$ distinct outputs. Therefore, $|\operatorname{Im}(f)| \leq p-1 < p = |\Z_p|$. 
+
+        Therefore, $f$ is not surjective, so there exists $a \in \Z_p $ that is not in the image of f. In other words, $\nexists x \in \Z_p$ such that $x^2 = a$. Therefore, not every element in $\Z_p$ is a square of $Z_p$
+    \end{solution}
+    \begin{subproblem}[resume]
+        \item Using part (a), show that there exists finite fields of $p^2$ elements for every prime $p$ in $\Z^+$
+    \end{subproblem}
+    \begin{solution}
+        Suppose p is odd. Consider the polynomial $f(x) = x^2 - a \in \Z_p[x]$. From part a, we know that $a$ is not a square, so this polynomial has no roots in $\Z_p$. Because this polynomial is of degree 2, no roots implies that it is irreducible. Therefore, we can construct the extension field $\Z_p(\alpha) = \{u+v\alpha \mid u, v \in \Z_p\}$, where $\alpha$ is the root of $x^2 - a$. Because each element in $\Z_p(\alpha)$ can be written uniquely as $u+v\alpha$, and there are $p$ choices for each of $u$ and $v$, there are $p \times p = p^2$ elements in $\Z_p(\alpha)$, as desired. 
+        
+        Note that part a only applied to the odd primes (i.e. $p \neq 2$). For $p=2$, consider $g(x) = x^2 + x + 1 \in \Z_2[x]$. Since $g(0) = 1$ and $g(1) = 1$, it has no roots in $\Z_2$. Because it is of degree 2, it is therefore irreducible. So adjoining a root $\beta$ to the field gives the field extension $\Z_2(\beta)$ which has degree 2, meaning it has $2^2 = 4$ elements. \qed
+    \end{solution}
+\end{problem}
+\begin{problem}[30.6]
+    Find a basis for the vector space $\Q(\sqrt[3]{2})$ over the field $\Q$
+\end{problem}
+\begin{solution}
+    Let $\alpha = \sqrt[3]{2}$. Thus, $\alpha^3 = 2$, so $\sqrt[3]{2}$ is a root of $x^3 - 2$.
+
+    To show that this is irreducible, let's use the Eisenstein criterion. Let's choose p = 2. We have that
+    \begin{align*}
+        1 &\not\equiv 0 \pmod{2} \quad (x^3)\\
+        0 &\equiv 0 \pmod{2} \quad (x^2)\\
+        0 &\equiv 0 \pmod{2} \quad (x)\\
+        -2 &\equiv 0 \pmod{2} \\ 
+        - 2 &\not\equiv 0 \pmod{2^2 = 4} \\
+    \end{align*}
+    Therefore, by the Eisenstein criterion, $x^3 - 2$ is irreducible over $\Q$. Since $\alpha$ has degree 3 over $\Q$, the set $\{1, \alpha, \alpha^2\}$ is a basis for $\Q(\sqrt[3]{2})$
+
+    Therefore, a basis for $\Q(\sqrt[3]{2})$ over the field $\Q$ is $\{1, \sqrt[3]{2}, (\sqrt[3]{2})^2\}$ \qed
+\end{solution}
+\begin{problem}[30.24]
+    Let $V$ and $V'$ be vector spaces over some field $F$. A function $\varphi \colon V \to V'$ is a linear transformation of $V$ into $V'$ if $\forall \alpha, \beta \in V, a \in F$:
+    \begin{align*}
+        \varphi(\alpha + \beta) &= \varphi(\alpha) + \varphi(\beta) \\
+        \varphi(a\alpha) &= a\varphi(\alpha)
+    \end{align*}
+    \begin{subproblem}
+        \item If $\{\beta_i \mid i \in I\}$ is a basis for $V$ over $F$, show that a linear transformation $\phi \colon V \to V'$ is completely determined by the vectors $\phi(\beta_i) \in V'$.
+    \end{subproblem}
+    \begin{solution}
+        Take an arbitrary vector $v \in V$. 
+
+        Since $\{\beta_i \mid i \in I\}$ is a basis for $V$, we know that $v$ can be written uniquely as a finite linear combination of basis vectors.
+
+        $v = a_1\beta_{i_1} + a_2 \beta_{i_2} + \dots + a_n \beta_{i_n}$
+
+        Applying $\varphi$ on each side: 
+        $\varphi(v) = \varphi(a_1\beta_{i_1} + a_2 \beta_{i_2} + \dots + a_n \beta_{i_n})$
+
+        By linearity:
+        $\varphi(v) = a_1 \varphi(\beta_{i_1}) + \dots + a_n \varphi(\beta_{i_n})$
+
+        Because the coefficients $a_1, \dots a_n$ are uniquely determined by $v$ because the $\beta_i$ form a basis, and $\varphi(\beta_i)$ are given, $\varphi(v)$ is uniquely determined for every $v \in V$ by $\varphi(\beta_i)$ \qed  
+        \end{solution} 
+        \begin{subproblem}[resume]
+            \item Let $\{\beta_i \mid i \in I\}$ be a basis for $V$, and let
+            $\{\beta_i' \mid i \in I\}$ be any set of vectors, not necessarily
+            distinct, of $V'$. Show that there exists exactly one linear
+            transformation $\phi \colon V \to V'$ such that
+            $\phi(\beta_i) = \beta_i'$.
+        \end{subproblem}
+        \begin{solution}
+            Take an arbitrary vector $v \in V$
+            
+            Since ${\beta_i \mid i \in I}$ is a basis, we can write 
+
+            $v = \sum_{k=1}^{n} a_k \beta_{i_k}$. Let us define $\varphi \colon V \to V'$ by $\varphi(v) = \sum_{k=1}^{n} a_k \beta_{i_k}'$. Since every vector has unique coefficients in the basis, $\varphi$ is defined unambiguously. 
+
+            We want to show that this function is linear.  Take arbitrary $a, b \in V, \alpha \in F$, where $a = \sum_{k = 1}^{n} c_k \beta_{i_k}$ and $b=\sum_{k=1}^{n} d_k \beta_{i_k}$
+            
+            Additivity:
+            \begin{align*}
+                \varphi(a+b) &= \varphi(\sum_{k=1}^{n}(c_k + d_k)\beta_{i_k}) \\
+                &= \sum_{k = 1}^{n}(c_k + d_k) \beta_{i_k}' \\
+                &= \sum_{k = 1}^{n} c_k \beta_{i_k}' + \sum_{k = 1}^{n} d_k \beta_{i_k}' \\
+                &= \varphi(a) + \varphi(b)
+            \end{align*}
+            
+            Scalar multiplication: 
+            \begin{align*}
+                \varphi(\alpha a) &= \varphi\left(\sum_{k=1}^{n} \alpha c_k \beta_{i_k}\right) \\
+                &= \sum_{k=1}^{n} \alpha c_k \beta_{i_k}' \\
+                &= \alpha \sum_{k=1}^{n} c_k \beta_{i_k}' \\
+                &= \alpha\varphi(a).
+            \end{align*}
+
+            Thus, $\phi$ is linear. 
+            
+            Note that $\beta_i = 1 \cdot \beta_i$. Therefore, 
+            $\varphi(\beta_i) = 1 \cdot \beta_i' = \beta_i'$. Therefore, there exists a linear transformation such that $\varphi(\beta_i) = \beta_i'$
+            \medskip
+
+            \textbf{Uniqueness}: 
+
+            From part a, we have that a linear transformation is completely determined by its values on the basis. 
+
+            Let's assume that there is another linear transformation, $\psi \colon V \to V'$, satisfying $\psi(\beta_i) = \beta_i' \hspace{1em}\forall i \in I$
+
+            Then, $\varphi(\beta_i) = \psi(\beta_i), \forall i \in I$. Because these two transformations are equal for every basis vector $\beta_i$, they must be equal for every vector in V. Therefore, $\varphi = \psi$. 
+            
+            Therefore, $\varphi$ is unique \qed   
+        \end{solution}
+\end{problem}
+
+\begin{problem}[30.26]
+    Let $V$ be a vector space over a field $F$, and let $S$ be a subspace of $V$. Define the quotient space $V/S$, and show that it is a vector space over $F$.
+\end{problem}
+\bigskip
+\begin{solution}
+    Let us define a "coset"
+
+    $v + S = \{v + s \mid s \in S\}$
+
+    Now let us define the Quotient space $V/S = \{v + S \mid v \in V\}$, and define $(v+S) + (w+S) = (v+w) + S$ and $(\alpha (v+S) = \alpha v + S, \forall \alpha \in F)$
+
+    We need to check that these operations are well-defined. 
+
+    Suppose that $v+S = v' + S$ and  $w + S = w' + S$
+
+    By definition of coset equality: 
+    $v-v' \in S, w-w' \in S$
+
+    Consider $(v+w) - (v' + w') = (v-v') + (w-w')$. Because S is a subspace, it is closed under addition, so $(v-v') + (w-w') \in S$
+    
+
+    Therefore, $(v+w) + S = (v' + w') + S$, so addition is well-defined. 
+
+    Suppose that $v+S = v' + S$. We want to show that $\forall \alpha \in F, \alpha v + S = \alpha v' + S$
+
+    $v + S = v' + S \implies v - v' \in S$
+
+    $\alpha v - \alpha v' = \alpha (v - v')$. Because S is a subspace, it is closed under scalar multiplication. Therefore, $\alpha (v-v') \in S$. Therefore, $\alpha v + S = \alpha v' + S$, so scalar multiplication is well-defined. 
+
+    To show $V/S$ is a vector space, let's show: 
+
+    \textbf{Additive Identity}
+
+    I claim that the zero vector of $V/S$ is $0_V + S = S$
+
+    Take arbitrary $v+S \in V/S$. Then $(v+S) + (0_V + S) = (v+0_V) + S =v+S$. 
+
+    Therefore, $S$ is the additive identity of $V/S$
+
+    \textbf{Additive inverse} 
+
+    Take any $v+S \in V/S$
+
+    I claim that the additive inverse is $(-v) + S$. 
+
+    $(v+S) + ((-v)+S) = (v + (-v)) + S = (0_V + S) = S = 0_{V/S}$. Therefore, every coset has an additive inverse, as desired. 
+
+    \textbf{Commutativity}
+
+    Take any $v+S, w + S \in V/S$
+
+    Then $(v+S) + (w + S) = (v+w) + S = (w + v) + S = (w + S) + (v + S)$. Therefore, addition is commutative in $V/S$
+
+    \textbf{Distributivity}
+
+    Want to show that $\alpha((v+S) + (w+S)) = \alpha (v+S) + \alpha (w+S)$
+
+    $\alpha((v+S) + (w+S)) = \alpha((v+w) + S) = \alpha(v+w) + S = (\alpha v + \alpha w) + S = (\alpha v + S) + (\alpha w + S) = \alpha(v+S) + \alpha(w+S)$, as desired. 
+
+    The remaining vector space axioms follow directly from the corresponding axioms in $V$, using the definitions of addition and scalar multiplication on $V/S$
+
+
+\end{solution}
 \end{document}
 
